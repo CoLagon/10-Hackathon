@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='app'>
 <head>
   <meta charset="UTF-8">
   <title>Hackathon</title>
@@ -7,15 +7,35 @@
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
 <!-- endbower -->
-
 <!-- inject:css -->
 <!-- endinject -->
 </head>
+<body ng-controller='SearchController as search'>
 
-<body>
-<div ui-view>
-
+<div>
+<h1>HEYA</h1>
 </div>
+
+
+	<button ng-click="search.guardianSearch(search.news)"></button>
+
+	<input ng-model="search.news">
+
+	<div ng-repeat="x in search.newsList.response.results">
+		<p>{{x.webTitle}}</p>
+		<p>{{x.webUrl}}</p>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- bower:js -->
 <script src="bower_components/angular/angular.js"></script>
@@ -24,21 +44,10 @@
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/toastr/toastr.js"></script>
 <!-- endbower -->
-<h1>HEYA</h1>
 <!-- inject:js -->
-
 <script src="app/app.module.js"></script>
-
 <script src="app/core/data.factory.js"></script>
-
-<script src="app/guardian/guardian.controller.js"></script>
-
-<script src="app/photoBucket/photobucket.controller.js"></script>
-
-<script src="app/wiki/wiki.controller.js"></script>
-
-<script src="app/youtube/youtube.controller.js"></script>
-
+<script src="app/search/search.controller.js"></script>
 <!-- endinject -->
 </body>
 </html>
