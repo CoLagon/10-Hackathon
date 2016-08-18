@@ -16,17 +16,19 @@
 <h1>HEYA</h1>
 </div>
 
-
-	<button ng-click="search.guardianSearch(search.news)"></button>
-
-	<input ng-model="search.news">
-
+<div class="container">
+	
+	<div class="input-group">
+	<input ng-model="search.news" type="text" placeholder="Search">
+	<span class="input-group-btn">
+		<button ng-click="search.guardianSearch(search.news); search.photoBucketSearch(search.news)"></button>
+	</span>
 	<div ng-repeat="x in search.newsList.response.results">
 		<p>{{x.webTitle}}</p>
 		<p>{{x.webUrl}}</p>
 	</div>
-
-
+	</div>
+</div>
 
 
 

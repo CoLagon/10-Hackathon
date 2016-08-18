@@ -42,9 +42,10 @@
         }
 
         function photoBucketSearch(search){
-        	dataFactory.guardianResults(search).then(
+        	dataFactory.photoBucketResults(search).then(
         		function(data){
         			vm.photoList = data;
+        			console.log(data);
         		},
         		function(error){
 

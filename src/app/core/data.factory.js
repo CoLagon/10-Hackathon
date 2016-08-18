@@ -26,7 +26,7 @@
                     console.log("youtube works");
                 },
                 function(err) {
-                    deferred.refect(err);
+                    deferred.reject(err);
                     console.log(err);
                 });
             return deferred.promise;
@@ -34,26 +34,27 @@
 
         function guardianResults(search) {
             var deferred = $q.defer();
-            $http.get('http://content.guardianapis.com/search?q=' + search + '&api-key=4c7cb4ab-5061-4c36-87b1-d939ce704072').
-            then(function(response) {
+            $http.get('http://content.guardianapis.com/search?q=' + search + '&api-key=4c7cb4ab-5061-4c36-87b1-d939ce704072')
+                .then(function(response) {
                     deferred.resolve(response.data);
                     console.log("guardian works");
                 },
                 function(err) {
-                    deferred.refect(err);
+                    deferred.reject(err);
                     console.log(err);
                 });
             return deferred.promise;
         }
 
-        function photoBucketResults() {
+        function photoBucketResults(search) {
             var deferred = $q.defer();
-            $http.get().then(function(response) {
+            $http.get('https://api.cognitive.microsoft.com/bing/v5.0/images/search?q='+ search +'&count=10&offset=0&mkt=en-us&safeSearch=Moderate HTTP/1.1')
+                .then(function(response) {
                     deferred.resolve(response.data);
                     console.log("photobucket works");
                 },
                 function(err) {
-                    deferred.refect(err);
+                    deferred.reject(err);
                     console.log(err);
                 });
             return deferred.promise;
@@ -66,7 +67,7 @@
                     console.log("wiki works");
                 },
                 function(err) {
-                    deferred.refect(err);
+                    deferred.reject(err);
                     console.log(err);
                 });
             return deferred.promise;
