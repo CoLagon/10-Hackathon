@@ -13,8 +13,9 @@
         vm.title = 'SearchController';
         vm.youtubeSearch = youtubeSearch;
         vm.guardianSearch = guardianSearch;
-        vm.photoBucketSearch = photoBucketSearch;
-        vm.wikiSearch = wikiSearch;
+        vm.giphySearch = giphySearch;
+        vm.urbanSearch = urbanSearch;
+        
 
 
         function youtubeSearch(search){
@@ -41,8 +42,8 @@
     		);
         }
 
-        function photoBucketSearch(search){
-        	dataFactory.photoBucketResults(search).then(
+        function giphySearch(search){
+        	dataFactory.giphyResults(search).then(
         		function(data){
         			vm.photoList = data;
         			console.log(data);
@@ -53,10 +54,10 @@
         	);
         }
 
-        function wikiSearch(search){
-        	dataFactory.wikiResults(search).then(
+        function urbanSearch(search){
+        	dataFactory.urbanResults(search).then(
         		function(data){
-        			vm.wikiList = data;
+        			vm.urbanList = data;
                     console.log(data);
         		},
         		function(error){

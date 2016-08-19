@@ -12,8 +12,8 @@
         var service = {
             youtubeResults: youtubeResults,
             guardianResults: guardianResults,
-            photoBucketResults: photoBucketResults,
-            wikiResults: wikiResults
+            giphyResults: giphyResults,
+            urbanResults: urbanResults
         };
         return service;
 
@@ -46,12 +46,12 @@
             return deferred.promise;
         }
 
-        function photoBucketResults(search) {
+        function giphyResults(search) {
             var deferred = $q.defer();
             $http.get('http://api.giphy.com/v1/gifs/search?q='+ search +'&api_key=dc6zaTOxFJmzC')
                 .then(function(response) {
                     deferred.resolve(response.data);
-                    console.log("photobucket works");
+                    console.log("giphy works");
                 },
                 function(err) {
                     deferred.reject(err);
@@ -60,9 +60,16 @@
             return deferred.promise;
         }
 
-        function wikiResults(search) {
+        function urbanResults(search) {
+
             var deferred = $q.defer();
-            $http.get('http://api.duckduckgo.com/?q='+ search +'&format=json&pretty=1').then(function(response) {
+            $http({
+                type: 'GET',
+                url: 'https://mashape-community-urban-dictionary.p.mashape.com/define?term='+ search +'',
+                headers: {
+                    'X-Mashape-Key': 'NfMIVi7AxgmshrLi7lXJu6gnXMstp18zjhJjsngkuS8EniKZiP'
+                }
+            }).then(function(response) {
                     deferred.resolve(response.data);
                     console.log("wiki works");
                 },

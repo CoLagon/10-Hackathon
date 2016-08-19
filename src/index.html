@@ -16,11 +16,11 @@
 <body ng-controller='SearchController as search'>
 	<!-- Header Nav -->
 	<header id="main-header">
-		<a class="navbar-brand" href="#">Scopius</a>
+		<a class="navbar-brand" href="#">Scopious</a>
 	    <nav class="navbar navbar-light bg-faded main-nav">
 	        <form class="form-inline pull-md-right">
 	            <input ng-model="search.news" class="form-control" id="main-input" type="text " placeholder="Search">
-	            <button ng-click="search.guardianSearch(search.news); search.photoBucketSearch(search.news); search.wikiSearch(search.news)" class="btn btn-outline-success" type="submit">Search</button>
+	            <button ng-click="search.guardianSearch(search.news); search.giphySearch(search.news); search.urbanSearch(search.news)" class="btn btn-outline-success" type="submit">Search</button>
 	        </form>
 	    </nav>
     </header>
@@ -38,10 +38,13 @@
 			        </div>
 		    </div>
 			
-
+	<!--Urban Definition-->
 		<div class="col-md-6">
-		    <div ng-repeat="x in search.photoList.data | limitTo: 5">
-		        <img src="{{x.images.downsized_still.url}}" </div>
+		    <div ng-repeat="x in search.urbanList.list | limitTo: 1">
+		    	<b>Definition</b><br>
+		        <p>{{x.definition}}</p>
+		        <b>Example</b><br>
+		        <p>{{x.example}}</p>
 		    </div>
 	    </div>
 
