@@ -1,55 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" ng-app='app'>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Hackathon</title>
-<!-- bower:css -->
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-<link rel="stylesheet" href="bower_components/toastr/toastr.css" />
-<!-- endbower -->
-<!-- inject:css -->
-<!-- endinject -->
+    <meta charset="UTF-8">
+    <title>Hackathon</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- endinject -->
 </head>
+
 <body ng-controller='SearchController as search'>
+	<!-- Header Nav -->
+	<header id="main-header">
+		<a class="navbar-brand" href="#">Scopius</a>
+	    <nav class="navbar navbar-light bg-faded main-nav">
+	        <form class="form-inline pull-md-right">
+	            <input ng-model="search.news" class="form-control" id="main-input" type="text " placeholder="Search">
+	            <button ng-click="search.guardianSearch(search.news); search.photoBucketSearch(search.news); search.wikiSearch(search.news)" class="btn btn-outline-success" type="submit">Search</button>
+	        </form>
+	    </nav>
+    </header>
+    <!--Body Information Output-->
 
-<div>
-<h1>HEYA</h1>
-</div>
+    <!--News Feed-->
+    <div class="container-fluid">
+    	<div class="row">
+    		<div class="col-md-3 newsfeed">
+			        <div ng-repeat="x in search.newsList.response.results">
+			        	<div class="panel">
+				            <p><b>{{x.webTitle}}<b></p>
+				            <p><a href="{{x.webUrl}}">View More Info</a></p>
+			            </div>
+			        </div>
+		    </div>
+			
 
-<div class="container">
-	
-	<div class="input-group">
-	<input ng-model="search.news" type="text" placeholder="Search">
-	<span class="input-group-btn">
-		<button ng-click="search.guardianSearch(search.news); search.photoBucketSearch(search.news)"></button>
-	</span>
-	<div ng-repeat="x in search.newsList.response.results">
-		<p>{{x.webTitle}}</p>
-		<p>{{x.webUrl}}</p>
+		<div class="col-md-6">
+		    <div ng-repeat="x in search.photoList.data | limitTo: 5">
+		        <img src="{{x.images.downsized_still.url}}" </div>
+		    </div>
+	    </div>
+
+	    <div class="col-md-3">
+		    <div ng-repeat="x in search.photoList.data | limitTo: 5">
+		        <img src="{{x.images.downsized_still.url}}" </div>
+		    </div>
+	    </div>
+
+    
+
 	</div>
-	</div>
-</div>
 
 
-
-
-
-
-
-
-
-
-<!-- bower:js -->
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="bower_components/toastr/toastr.js"></script>
-<!-- endbower -->
-<!-- inject:js -->
-<script src="app/app.module.js"></script>
-<script src="app/core/data.factory.js"></script>
-<script src="app/search/search.controller.js"></script>
-<!-- endinject -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <!-- endbower -->
+    <!-- inject:js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/core/data.factory.js"></script>
+    <script src="app/search/search.controller.js"></script>
+    <!-- endinject -->
 </body>
+
 </html>

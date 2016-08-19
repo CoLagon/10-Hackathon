@@ -57,6 +57,7 @@
         	dataFactory.wikiResults(search).then(
         		function(data){
         			vm.wikiList = data;
+                    console.log(data);
         		},
         		function(error){
 
