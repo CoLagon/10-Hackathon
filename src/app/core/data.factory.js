@@ -34,7 +34,7 @@
 
         function guardianResults(search) {
             var deferred = $q.defer();
-            $http.get('http://content.guardianapis.com/search?q=' + search + '&api-key=4c7cb4ab-5061-4c36-87b1-d939ce704072')
+            $http.get('http://content.guardianapis.com/search?q=' + search + '&api-key=820bdf0c-4659-4e85-9fb8-8f16b165a70e')
                 .then(function(response) {
                     deferred.resolve(response.data);
                     console.log("guardian works");

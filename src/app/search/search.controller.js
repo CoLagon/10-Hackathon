@@ -5,16 +5,22 @@
         .module('app')
         .controller('SearchController', SearchController);
 
-    SearchController.$inject = ['dataFactory'];
+    SearchController.$inject = ['dataFactory', '$sce'];
 
     /* @ngInject */
-    function SearchController(dataFactory) {
+    function SearchController(dataFactory, $sce) {
         var vm = this;
         vm.title = 'SearchController';
         vm.youtubeSearch = youtubeSearch;
         vm.guardianSearch = guardianSearch;
         vm.giphySearch = giphySearch;
         vm.urbanSearch = urbanSearch;
+        vm.getYoutubeUrls = getYoutubeUrls;               
+        vm.YoutubeUrl1; 
+        vm.YoutubeUrl2; 
+        vm.YoutubeUrl3; 
+        
+
         
 
 
@@ -65,5 +71,12 @@
         		}
         	);
         }
-    }
+            
+            function getYoutubeUrls() { 
+                vm.YoutubeUrl1 = $sce.trustAsResourceUrl('https://www.youtube.com/embed?listType=search&list=' + vm.news+'1');
+                vm.YoutubeUrl2 = $sce.trustAsResourceUrl('https://www.youtube.com/embed?listType=search&list=' + vm.news+'2');
+                vm.YoutubeUrl3 = $sce.trustAsResourceUrl('https://www.youtube.com/embed?listType=search&list=' + vm.news+'3');
+              
+      }
+   } 
 })();

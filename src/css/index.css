@@ -1,4 +1,6 @@
-
+* {
+	font-family: 'Baloo Bhaina', cursive;
+}
 .main-nav {
 
 	padding-left: 500px;
@@ -7,20 +9,124 @@
 }
 
 #main-input {
+	
+	width: 500px;
 
-	width: 450px;
+}
 
+.main-form {
+
+	padding-top: 15px;
+	padding-left: 150px;
 }
 
 #main-header {
 
-	background: black;
+	background:;
+	opacity: 0.8;
+
 
 }
 
 .navbar-brand {
 
-	font-size: 40px;
+	font-size: 50px;
+	padding-top: 30px;
+	padding-left: 200px;
 
 }
+
+#slogan {
+	font-size: 12px;
+	padding-top: 5px;
+	padding-left: 100px;
+}
+
+#searchinfo {
+
+	background-color: #6AAFE6;
+	text-align: center;
+	padding-top: 12px;
+
+}
+
+/* Middle Column */
+
+.top-div {
+
+	padding-bottom: 50px;
+
+}
+
+.bottom-div {
+
+	padding-bottom: 200px;
+	background-color: blue;
+
+}
+
+.giphybody {
+
+	display: inline-block;
+}
+
+.giphyimages {
+	height: 300px;
+	width: 271px;
+	padding: 10px 4px 10px 4px
+}
+
+.newsfeed {
+
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: lightgrey;
+}
+
+.panel:hover {
+	
+	-moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+
+}
+
+.panel {
+	text-align: center;
+
+}
+
+.ytvideos {
+
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: lightgrey;
+
+}
+
+#textarea {
+	width: 300px;
+}
+
+#urbantextfield {
+	
+	overflow-y: scroll;
+	height: 200px;
+	text-align: center;
+	
+
+}
+
+#main-footer p {
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
 

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Hackathon</title>
+    <title>Scopious</title>
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
@@ -11,53 +11,74 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="css/index.css">
     <!-- endinject -->
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
 </head>
 
 <body ng-controller='SearchController as search'>
 	<!-- Header Nav -->
-	<header id="main-header">
-		<a class="navbar-brand" href="#">Scopious</a>
+	<header id="main-header" class="browser-default">
+		<a class="navbar-brand" href="http://localhost:8080/">Scopious<p id="slogan">Abundant, often ridiculously...</p></a>
 	    <nav class="navbar navbar-light bg-faded main-nav">
-	        <form class="form-inline pull-md-right">
+	        <form class="form-inline pull-md-right main-form">
 	            <input ng-model="search.news" class="form-control" id="main-input" type="text " placeholder="Search">
-	            <button ng-click="search.guardianSearch(search.news); search.giphySearch(search.news); search.urbanSearch(search.news)" class="btn btn-outline-success" type="submit">Search</button>
+	            <button ng-click="search.guardianSearch(search.news); search.giphySearch(search.news); search.urbanSearch(search.news);  search.getYoutubeUrls()" class="btn btn-outline-success btn-primary" type="submit">Search</button>
 	        </form>
 	    </nav>
+	    <hr>
     </header>
     <!--Body Information Output-->
 
     <!--News Feed-->
     <div class="container-fluid">
     	<div class="row">
-    		<div class="col-md-3 newsfeed">
-			        <div ng-repeat="x in search.newsList.response.results">
-			        	<div class="panel">
-				            <p><b>{{x.webTitle}}<b></p>
-				            <p><a href="{{x.webUrl}}">View More Info</a></p>
-			            </div>
-			        </div>
+
+    		<div class="col-md-2 newsfeed">
+		    		<div id="searchinfo">
+						<p>News Feed</p>
+					</div>
+			        <div  class="hoverable panel" ng-repeat="x in search.newsList.response.results | limitTo: 5">
+				   	 	<p>{{x.webTitle}}</p>
+				     	<p><a href="{{x.webUrl}}">View More Info</a></p>  
+				    </div>
 		    </div>
 			
 	<!--Urban Definition-->
-		<div class="col-md-6">
-		    <div ng-repeat="x in search.urbanList.list | limitTo: 1">
-		    	<b>Definition</b><br>
-		        <p>{{x.definition}}</p>
-		        <b>Example</b><br>
-		        <p>{{x.example}}</p>
+		<div class="col-md-8">
+			<div id="searchinfo">
+				<p>Search Results For : </p>
+			</div>
+		    <div ng-repeat="x in search.urbanList.list | limitTo: 1" class="top-div">
+				<div id="urbantextfield">
+			    	<p>Definition :</p>
+			        <p>{{x.definition}}</p>
+			        <p>Example :</p>
+			        <p>{{x.example}}</p>
+		        </div>
 		    </div>
-	    </div>
-
-	    <div class="col-md-3">
-		    <div ng-repeat="x in search.photoList.data | limitTo: 5">
-		        <img src="{{x.images.downsized_still.url}}" </div>
-		    </div>
-	    </div>
-
-    
-
+	<!-- Still Giphy Images -->	
+			<div ng-repeat="x in search.photoList.data | limitTo: 3" class="giphybody">
+			    	<img src="{{x.images.original.url}}" class="giphyimages">
+			</div>
+		    	
+		</div>
+	<!--Youtube Videos-->
+		<div class="col-md-2 ytvideos"> 
+			<div id="searchinfo">
+				<p>Videos</p>
+			</div>	
+			<div>
+				<iframe id="ytplayer" type="text/html" width="180px" height="135px"
+	 			ng-src='{{search.YoutubeUrl1}}' frameborder="0"></iframe>
+	    	</div><br>
+			<div>
+				<iframe id="ytplayer" type="text/html" width="180px" height="135px"
+	 			ng-src='{{search.YoutubeUrl2}}' frameborder="0"></iframe>
+	    	</div><br>
+			<div>
+				<iframe id="ytplayer" type="text/html" width="180px" height="135px"
+	 			ng-src='{{search.YoutubeUrl3}}' frameborder="0"></iframe>
+	    	</div><br>
 	</div>
-
 
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
@@ -71,6 +92,9 @@
     <script src="app/core/data.factory.js"></script>
     <script src="app/search/search.controller.js"></script>
     <!-- endinject -->
+ 
 </body>
+ 
+
 
 </html>
