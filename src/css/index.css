@@ -1,3 +1,6 @@
+
+/* Here we tweek various classes and ID's to bring the vison we have for our site to life */
+
 * {
 	font-family: 'Baloo Bhaina', cursive;
 }
@@ -122,10 +125,16 @@
 }
 
 
+#imageLogo {
+	display: block;
+    text-align: center;
+    padding-top: 150px;
+}
 
-
-
-
+.navLogo {
+	padding: 10px 10px;
+	
+}
 
 
 

@@ -5,33 +5,19 @@
         .module('app')
         .factory('dataFactory', dataFactory);
 
+    // Here we inject $http and $q to interact with the various API's we use and to return a promise.
     dataFactory.$inject = ['$http', '$q'];
 
-    /* @ngInject */
     function dataFactory($http, $q) {
         var service = {
-            youtubeResults: youtubeResults,
             guardianResults: guardianResults,
             giphyResults: giphyResults,
             urbanResults: urbanResults
         };
         return service;
 
-        ////////////////
-
-        function youtubeResults(search) {
-            var deferred = $q.defer();
-            $http.get('http://').then(function(response) {
-                    deferred.resolve(response.data);
-                    console.log("youtube works");
-                },
-                function(err) {
-                    deferred.reject(err);
-                    console.log(err);
-                });
-            return deferred.promise;
-        }
-
+/***********************************************************************************************/
+        // Here the guardianResults function sends out the request for our search query. It will either return the data or an error
         function guardianResults(search) {
             var deferred = $q.defer();
             $http.get('http://content.guardianapis.com/search?q=' + search + '&api-key=820bdf0c-4659-4e85-9fb8-8f16b165a70e')
@@ -45,7 +31,8 @@
                 });
             return deferred.promise;
         }
-
+/***********************************************************************************************/
+        // Here the giphyResults function sends out the request for our search query. It will either return the data or an error
         function giphyResults(search) {
             var deferred = $q.defer();
             $http.get('http://api.giphy.com/v1/gifs/search?q='+ search +'&api_key=dc6zaTOxFJmzC')
@@ -59,9 +46,9 @@
                 });
             return deferred.promise;
         }
-
+/***********************************************************************************************/
+        // Here the urbanResults function sends out the request for our search query. It will either return the data or an error
         function urbanResults(search) {
-
             var deferred = $q.defer();
             $http({
                 type: 'GET',
